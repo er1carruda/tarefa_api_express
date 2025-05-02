@@ -16,11 +16,15 @@ app.get('/', (req, res) => {
 
 // Função para obter a data atual em GMT-3
 function getCurrentDateGMT3() {
-  // Obtém a data e hora atual
+  // Cria uma nova data no fuso horário local
   const now = new Date();
   
-  // Ajusta para GMT -3 (Brasília)
-  const gmt3Date = new Date(now.getTime() - (now.getTimezoneOffset() + 180) * 60000);
+  // Obtém a data atual no formato string para garantir consistência
+  const today = now.toISOString().split('T')[0];
+  
+  // Cria uma nova data com a data atual no fuso GMT-3
+  // Usamos a hora 12:00 para evitar problemas com mudanças de dia
+  const gmt3Date = new Date(`${today}T12:00:00-03:00`);
   
   return gmt3Date;
 }

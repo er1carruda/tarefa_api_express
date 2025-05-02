@@ -2,3 +2,4 @@ node_modules/
 .DS_Store
 .env
 front_exemplo/
+# front-basic/ - Esta pasta será versionada
